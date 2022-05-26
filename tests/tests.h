@@ -73,5 +73,64 @@ TEST(generation_tests, check_if_all_movable_cells_cant_lead_into_the_void) {
     }
 }
 
+TEST(player_move_tests, player_cant_move_into_wall_test) {
+    dungeon_map new_dungeon;
+    new_dungeon.generate(4);
+
+    int xx = new_dungeon.player.x;
+    int yy = new_dungeon.player.y;
+
+    while (new_dungeon.map[xx][yy] != '#') {
+        new_dungeon.move_player(xx, yy);
+        EXPECT_NE(new_dungeon.map[new_dungeon.player.x][new_dungeon.player.y], ' ');
+        EXPECT_NE(new_dungeon.map[new_dungeon.player.x][new_dungeon.player.y], '#');
+        xx++;
+    }
+
+    new_dungeon.move_player(xx, yy);
+    EXPECT_NE(new_dungeon.player.x, xx);
+}
+
+TEST(player_move_tests, there_are_an_descend_and_it_works) {
+    dungeon_map new_dungeon;
+    new_dungeon.generate(4);
+
+    int xx = -1;
+    int yy = -1;
+
+    for (int i=0; i<new_dungeon.width; i++) {
+        for (int j=0; j<new_dungeon.height; j++) {
+            if (new_dungeon.map[i][j] == '>') {
+                xx = i;
+                yy = j;
+                break;
+            }
+        }
+        if (xx != -1)
+            break;
+    }
+    
+    EXPECT_NE(xx, -1);
+
+    vector <vector <char> > old_dungeon_map(new_dungeon.map);
+
+    new_dungeon.move_player(xx, yy);
+
+    bool flag = false;
+    for (int i=0; i<new_dungeon.width; i++) {
+        for (int j=0; j<new_dungeon.height; j++) {
+            if (new_dungeon.map[i][j] != old_dungeon_map[i][j]) {
+                flag = true;
+                break;
+            }
+        }
+        if (flag)
+            break;
+    }
+
+    EXPECT_EQ(flag, true);
+}
+
+
 #endif
 
