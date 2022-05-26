@@ -35,12 +35,9 @@ int main() {
                     break;
                 case 'z':
                     exit(0);
-                    break;
             }
             new_dungeon.move_player(xx, yy);
             new_dungeon.draw();
         }
     }
-
-    return 0;
 }
