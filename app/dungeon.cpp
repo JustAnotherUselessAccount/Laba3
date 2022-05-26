@@ -2,7 +2,7 @@
 #include "dungeon_generate.cpp"
 #include <random>
 #include <ctime>
-#include "conio.h"
+// #include "conio.h"
 // #include <conio.h>
 
 using namespace std;
@@ -16,7 +16,7 @@ int main() {
 
     while (true) {
         char k;
-        k = getch();
+        k = cin.get();//getch();
         if (k != ' ') {
             int xx = new_dungeon.player.x;
             int yy = new_dungeon.player.y;

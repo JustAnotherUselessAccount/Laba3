@@ -64,8 +64,10 @@ TEST(generation_tests, check_if_all_movable_cells_cant_lead_into_the_void) {
                 case '>':
                     for (int ii=i-1; ii<=i+1; ii++) {
                         for (int jj=j-1; jj<=j+1; jj++) {
-                        EXPECT_NE(new_dungeon.map[ii][jj], " ");
+                            EXPECT_NE(new_dungeon.map[ii][jj], ' ');
+                        }
                     }
+                    break;
             }
         }
     }

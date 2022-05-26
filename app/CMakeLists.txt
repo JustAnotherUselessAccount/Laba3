@@ -4,7 +4,7 @@ project(ctest)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_definitions ("-Wall -Wextra -Wpedantic -Wunreachable-code -Wuninitialized")
+add_definitions ("-Wall -Wunreachable-code")
 
 set(SOURCES
         dungeon.cpp 
