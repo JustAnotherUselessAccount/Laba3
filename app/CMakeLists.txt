@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.7)
 project(ctest)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_definitions ("-Wall -Wextra -Wpedantic -Wunreachable-code -Wuninitialized")
@@ -9,6 +9,7 @@ add_definitions ("-Wall -Wextra -Wpedantic -Wunreachable-code -Wuninitialized")
 set(SOURCES
         dungeon.cpp 
         dungeon_generate.cpp
+        conio.h
         )
 
 set(HEADERS
