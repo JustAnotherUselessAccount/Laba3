@@ -73,6 +73,33 @@ TEST(generation_tests, check_if_all_movable_cells_cant_lead_into_the_void) {
     }
 }
 
+TEST(player_move_tests, player_cant_move_outside_of_place) {
+    dungeon_map new_dungeon;
+    new_dungeon.generate(4);
+
+    new_dungeon.move_player(-1, -1);
+    EXPECT_NE(new_dungeon.player.x, -1);
+    EXPECT_NE(new_dungeon.player.y, -1);
+}
+
+TEST(player_move_tests, player_cant_move_outside_of_place_2) {
+    dungeon_map new_dungeon;
+    new_dungeon.generate(4);
+
+    new_dungeon.move_player(new_dungeon.width + 2, new_dungeon.height + 4);
+    EXPECT_NE(new_dungeon.player.x, new_dungeon.width + 2);
+    EXPECT_NE(new_dungeon.player.y, new_dungeon.height + 4);
+}
+
+TEST(player_move_tests, player_cant_move_into_the_void) {
+    dungeon_map new_dungeon;
+    new_dungeon.generate(4);
+
+    new_dungeon.move_player(0, 0);
+    EXPECT_NE(new_dungeon.player.x, 0);
+    EXPECT_NE(new_dungeon.player.y, 0);
+}
+
 TEST(player_move_tests, player_cant_move_into_wall_test) {
     dungeon_map new_dungeon;
     new_dungeon.generate(4);

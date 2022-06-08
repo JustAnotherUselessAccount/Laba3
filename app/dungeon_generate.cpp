@@ -300,6 +300,7 @@ public:
         cout << line;
     }
 
+private:
     void make_path(door dr, int i, vector <vector <int> > &owner, dsu &rm_dsu,  bool flag = 0) {
         vector <door> q;
         int q_pointer = 0;
@@ -334,17 +335,20 @@ public:
         }
     }
 
+public:
     void move_player(int xx, int yy) {
-        switch (map[xx][yy]) {
-            case '.':
-            case '[':
-            case '>':
-                player.x = xx;
-                player.y = yy;
-                if (map[xx][yy] == '>') {
-                    generate();
-                }
-                break;
+        if (xx >= 0 && yy >= 0 && xx < width && yy < height) {
+            switch (map[xx][yy]) {
+                case '.':
+                case '[':
+                case '>':
+                    player.x = xx;
+                    player.y = yy;
+                    if (map[xx][yy] == '>') {
+                        generate();
+                    }
+                    break;
+            }
         }
     }
 
